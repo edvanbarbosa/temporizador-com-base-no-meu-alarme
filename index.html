@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Espaço reservado para a separação e organização do estilo -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap');
+
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+        }
+        section{
+            background-color: #1F1F23;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4em;
+            width: 100%;
+            height: 100%;
+        }
+        div{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            background-color: #2f2f38;
+            border-radius: 1em;
+            height: 300px;
+            width: 300px;
+            transition: .3s ease-in-out;
+            box-shadow: 2px 2px 20px .4px #53E6D4;
+            
+        }
+        div:hover{
+            box-shadow: 2px 2px 20px 5px #53E6D4;
+            transform: scale(1.05);
+        }
+        span{
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+           font-size: 7em;
+        }
+        @media screen and (max-width:1094px) {
+            section{
+                flex-direction: column;
+                gap: 4em;
+            }
+            div{
+                height: 200px;
+                width: 200px;
+            }
+            span{
+                font-size: 5em;
+            }
+        }
+        
+
+
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        
+            <div><span class="hr">00</span></div>
+            <div><span class="min">00</span></div>
+            <div><span class="seg">00</span></div>
+        
+    </section>
+<script src="./main.js"></script>
+</body>
+
+</html>
