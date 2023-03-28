@@ -7,7 +7,7 @@ const cronometro = ()=>{
     var now = new Date
 
 
-    const list_ala = [5,40,0]
+    const list_ala = [5,35,0]
 
 
     var hr_rd = now.getHours()
@@ -21,8 +21,8 @@ const cronometro = ()=>{
     var result_seg = subtr_seg<0?subtr_seg+86400:subtr_seg
 
     var segundos = result_seg%60
-    var minutos =parseInt((result_seg/60)%60)
-    var horas = parseInt(minutos%60)
+    var minutos =parseInt((result_seg/60))%60
+    var horas = parseInt((result_seg/60)/60)
 
     console.log(horas,minutos,segundos)
 
