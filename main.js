@@ -2,6 +2,10 @@ var hr = document.querySelector('.hr')
 var min = document.querySelector('.min')
 var seg = document.querySelector('.seg') 
 
+let music = new Audio("./Alarme_da_samsung(M4A_128K).m4a")
+
+
+
 const cronometro = ()=>{
    
     var now = new Date
@@ -26,18 +30,18 @@ const cronometro = ()=>{
 
     console.log(horas,minutos,segundos)
 
-    hr.innerHTML = horas
-    min.innerHTML = minutos
-    seg.innerHTML = segundos
-    if(horas < 10){
-        hr.innerHTML = '0' + horas;
-        if(minutos < 10){
-            min.innerHTML = '0' + minutos;
-            if(segundos < 10){
-                seg.innerHTML = '0' + segundos; 
-            } 
-        } 
-    }
+    hr.innerHTML = horas>9?horas:'0'+horas
+    min.innerHTML = minutos>9?minutos:'0'+minutos
+    seg.innerHTML = segundos>9?segundos:'0' + segundos
+    var button = document.querySelector("button")
+
+    button.addEventListener('click',()=>{
+        music.play()
+        
+    })
+
+
+   
 
 
 
@@ -45,6 +49,7 @@ const cronometro = ()=>{
 }
 setInterval(function time(){
     cronometro()
+    
 },1000)
 
 
