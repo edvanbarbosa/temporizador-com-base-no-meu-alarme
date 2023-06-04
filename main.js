@@ -9,41 +9,18 @@ let music = new Audio("./Alarme_da_samsung(M4A_128K).m4a")
 
 const cronometro = ()=>{
    
-    var now = new Date
+    var now = new Date()
 
+    var alvo  = new Date(now.getFullYear(), 11, 18)
 
-    const list_ala = [352,0,0,0]
+    var dif = alvo.getTime()-now.getTime()
 
+    let dias = Math.floor(dif / (1000*60*60*24))
+    let horas = Math.floor( dif /(1000*60*60*24)%24)
+    let minutos = Math.floor((dif /(1000*60*60))%60)
+    let segundos = (dif /(1000*60*60*24)/60)
 
-    var hr_rd = now.getHours()
-    var min_rd = now.getMinutes()
-    var seg_rd = now.getSeconds() 
-    var dias_rd = now.getDate()
-    
-    s_segatual  = (hr_rd*3600)+(min_rd*60)+seg_rd
-    s_segala = (list_ala[1]*3600)+(list_ala[2]*60)+list_ala[3]
-
-    var subtr_seg = s_segala - s_segatual
-
-    var result_seg = subtr_seg<0?subtr_seg+86400:subtr_seg
-
-    var segundos = result_seg%60
-    var minutos =parseInt((result_seg/60))%60
-    var horas = parseInt((result_seg/60)/60)%24
-
-    var mes = now.getMonth()
-    var dias = list_ala[0]-( 30*mes  + dias_rd)
-
-    console.log(mes)
-
-    hr.innerHTML = horas>9?horas:'0'+horas
-    min.innerHTML = minutos>9?minutos:'0'+minutos
-    seg.innerHTML = segundos>9?segundos:'0' + segundos
-    diaa.innerHTML = dias>9?dias:'0'+dias
-
-
-   
-
+    console.log(dias,horas,minutos,segundos)
 
 
 
@@ -52,6 +29,72 @@ setInterval(function time(){
     cronometro()
     
 },1000)
+
+const ipMes = document.querySelector('.mes')
+const ipDia = document.querySelector('.dia')
+const pDia = document.querySelector('.dia-number')
+const pMes = document.querySelector('.mes-number')
+const btn = document.querySelector('.btn')
+
+
+ipDia.addEventListener('keyup',()=>{
+    if (ipDia.value.length <=2 && ipDia.value.length >=1){
+        pDia.innerHTML = ipDia.value 
+        
+    }
+    verific()
+})
+ipMes.addEventListener('keyup',()=>{
+    if (ipMes.value.length <=2 && ipMes.value.length >=1){
+        pMes.innerHTML = ipMes.value 
+        
+    }
+    verific()
+})
+
+
+
+let verification = false
+const verific = ()=>{
+
+    if(ipDia.value.length > 0){
+        if(ipDia.value>31 || ipDia.value<1){
+            ipDia.style.background = '#ff000044'
+            document.querySelector('.ntd').style.display = 'block'
+            verification = false
+        }
+        else{
+            document.querySelector('.ntd').style.display = 'none'
+            ipDia.style.background = '#4f4f58c6'
+            verification = true
+        }
+   }
+
+    if(ipMes.value.length > 0){
+        if(ipMes.value > 12 || ipMes.value<1){
+            ipMes.style.background = '#ff000044'
+            document.querySelector('.ntm').style.display = 'block'
+            verification = false
+        }
+        else{
+            document.querySelector('.ntm').style.display = 'none'
+            ipMes.style.background = '#4f4f58c6'
+            verification = true
+        }
+    }
+    
+   
+    
+
+}
+btn.addEventListener('click',()=>{
+    if(verification){
+        window.location.href = './calc.html'
+    }
+    
+})
+
+
 
 
 
